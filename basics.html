@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .userStyle {
+            background-color: lightgoldenrodyellow;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
+        integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
+        crossorigin="anonymous"></script>
+    <script type="text/babel">
+        let user = {
+            first_name: 'John',
+            last_name: 'Smith',
+            age: 36,
+            login: 'user',
+            password: '123',
+            getFullName: function() {
+                return `${this.first_name} ${this.last_name}`
+            }
+        }
+
+        let cssClass = {
+            width: "75%",
+            fontSize: "40px",
+            textAlign: "center"
+        }
+
+        ReactDOM.render(
+            <div className="userStyle" style={cssClass}>
+                <h1>Hello React {2 + 2}</h1>
+                <h2>{user.getFullName()}</h2>
+                <p>{user.first_name}</p>
+                <p>{user.last_name}</p>
+                <p>{new Date().toTimeString()}</p>
+            </div>
+            ,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+
+</html>
