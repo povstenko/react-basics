@@ -40,18 +40,22 @@
         class ClickButton extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { class: "off" }
+                this.state = { class: "off", text: "Off", count: 0 }
                 this.handleClick = this.handleClick.bind(this)
             }
 
             handleClick() {
-                let cl = this.state.class === "off"? "on": "off";
-                this.setState({class: cl})
+                let cl = this.state.class === "off" ? "on" : "off";
+                let txt = this.state.text === "Off" ? "On" : "Off";
+                this.setState({ class: cl, text: txt, count: this.state.count + 1 })
                 console.log("Click");
             }
 
             render() {
-                return <div><button onClick={this.handleClick} className={this.state.class}>Click Me</button></div>
+                return <div>
+                    <button onClick={this.handleClick} className={this.state.class}>{this.state.text}</button>
+                    <p>{this.state.count}</p>
+                </div>
             }
         }
 
