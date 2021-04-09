@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
+        integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
+        crossorigin="anonymous"></script>
+    <script type="text/babel">
+        let products = {
+            title: "List of Products",
+            items: ["item1", "item2", "item3", "item4", "item5"]
+        }
+
+        class Item extends React.Component {
+            render() {
+                return <li>{this.props.name}</li>
+            }
+        }
+        class ListItem extends React.Component {
+            constructor(props) {
+                super(props);
+                this.filterItems = this.filterItems.bind(this);
+                this.state = {items: this.props.data.items}
+                this.filterItems = this.filterItems.bind(this);
+            }
+
+            filterItems(e) {
+                console.log(e.target.value);
+            }
+
+            render() {
+                return <div>
+                    <h1>{this.props.data.title}</h1>
+                    <input type="text" placeholder="Search item" onChange={this.filterItems}/>
+                    <ul>
+                        {
+                            this.props.data.items.map(function(item) {
+                                return <Item name={item} key={item}/>
+                            })
+                        }
+                    </ul>
+                </div>
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <ListItem data={products} />
+            </div>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+
+</html>
